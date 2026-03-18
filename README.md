@@ -1,18 +1,7 @@
 # Basilisk-GE
 
-This is WIP Game Engine made for Programacion de Graficos I and II. It's built on top of modern C++ with the required 
+This is a fork of the WIP Game Engine made for Programacion de Graficos I and II. It's built on top of modern C++ with the required 
 checks and auto-pointers.
-
-# Todo
-- 3D rendering
-- Events
-- Triggers
-- Serialization
-- Editor
-- Audio Manager
-- Building
-- Documentation page
-- Others
 
 # Installation
 Clone from source and compile with MSBuild, then Build.bat should generate a release DLL in the project root folder. 
@@ -23,4 +12,5 @@ Optionally download directly from releases.
 # Credits
 Two people are working on this project! Find us on itch:
 - Nicole Gallardo or [ProjectBifron](https://projectbifron.itch.io)
+### On this fork:
 - Sofi Alvarez or [gensofi24](https://gensofi24.itch.io/)
