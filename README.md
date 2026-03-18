@@ -1,7 +1,5 @@
 # Basilisk-GE
 
-<img width="752" height="679" alt="meme gh sofia" src="https://github.com/user-attachments/assets/3e84855f-8bab-45d5-a090-a94dcf2242a8" />
-
 This is WIP Game Engine made for Programacion de Graficos I and II. It's built on top of modern C++ with the required 
 checks and auto-pointers.
 
