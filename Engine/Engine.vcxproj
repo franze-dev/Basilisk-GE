@@ -123,6 +123,7 @@
     <ClInclude Include="src\Colors.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Entity2D.h" />
+    <ClInclude Include="src\Entity3D.h" />
     <ClInclude Include="src\Export.h" />
     <ClInclude Include="src\Frame.h" />
     <ClInclude Include="src\Input.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="src\Entity2D.cpp">
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="src\Entity3D.cpp" />
     <ClCompile Include="src\Frame.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\InputAction.cpp" />
