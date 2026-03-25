@@ -21,6 +21,7 @@ namespace basilisk
     public:
         
 #pragma region Loading
+        void SetDimensions(const bool is2D);
         /// <summary>
         /// Initializes GLFW.
         /// </summary>
@@ -34,7 +35,7 @@ namespace basilisk
         /// <summary>
         /// Initializes GLEW.
         /// </summary>
-        void InitGL() const;
+        void InitGL(const bool is2D = false);
 
         /// <summary>
         /// Loads an orthogonal projection matrix. Should be called once.
@@ -163,7 +164,8 @@ namespace basilisk
         glm::vec3 CameraPos;
         glm::vec3 CameraUp;
         glm::vec3 CameraTarget;
-        
+        bool Is2D = false;
+
         glm::mat4 ProjectionMatrix = glm::mat4(1.0f);
         glm::mat4 ViewMatrix = glm::mat4(1.0f);
 

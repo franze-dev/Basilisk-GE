@@ -13,6 +13,11 @@
 
 namespace basilisk
 {
+    void Renderer::SetDimensions(const bool is2D)
+    {
+        GetInstance().Is2D = is2D;
+    }
+
     void Renderer::InitGLFW()
     {
         Log::Get()->info("Loading GLFW");
@@ -22,7 +27,7 @@ namespace basilisk
             int errorCode = glfwGetError(&description);
 
             Log::Get()->error("GLFW failed to initialize with error code {}.\n Error description: {}", errorCode, std::string(description));
-            abort();        
+            abort();
         }
         Log::Get()->info("GLFW loaded");
     }
@@ -33,28 +38,36 @@ namespace basilisk
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     }
 
-    void Renderer::InitGL() const
+    void Renderer::InitGL(const bool is2D)
     {
-        
         Log::Get()->info("Loading GLEW");
         if (const unsigned int errorCode = glewInit(); errorCode != GLEW_OK)
         {
             Log::Get()->error("GLEW failed to initialize with error code {}.\n Error description: {}", errorCode,
-                          std::string(reinterpret_cast<const char*>(glewGetErrorString(errorCode))));
-            abort();            
+                              std::string(reinterpret_cast<const char*>(glewGetErrorString(errorCode))));
+            abort();
         }
 
+        this->SetDimensions(is2D);
+        if (!Is2D)
+        {
+            glEnable(GL_DEPTH_TEST);
+            glDepthFunc(GL_LESS);
+        }
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         stbi_set_flip_vertically_on_load(true);
-        
+
         Log::Get()->info("GLEW loaded");
     }
 
     void Renderer::LoadProjectionMatrix()
     {
         const auto size = this->Window->GetSize();
-        this->ProjectionMatrix = glm::ortho(0.0f, static_cast<float>(size.x), 0.0f, static_cast<float>(size.y), 0.1f, 100.0f);
+
+        this->ProjectionMatrix =
+            GetInstance().Is2D ? glm::ortho(0.0f, static_cast<float>(size.x), 0.0f, static_cast<float>(size.y), 0.1f, 100.0f) : // 2D
+            glm::perspective(glm::radians(45.0f), 32.0f / 15.0f, 0.1f, 11000.0f); // 3D
     }
 
     void Renderer::BindAndFillVbo(const unsigned int VboID, const int sizeArray, const float array[])
@@ -76,11 +89,8 @@ namespace basilisk
         glEnableVertexAttribArray(index);
     }
 
-    void Renderer::BindBufferDataUV(const unsigned int vbo,
-                                    const int amountVertices,
-                                    float* arrayData,
-                                    const int verticesBefore,
-                                    const int sizeDataInVbo)
+    void Renderer::BindBufferDataUV(
+        const unsigned int vbo, const int amountVertices, float* arrayData, const int verticesBefore, const int sizeDataInVbo)
     {
         BindAndFillVbo(vbo, amountVertices, arrayData);
         SetAttribPointer(2, sizeDataInVbo, sizeDataInVbo + verticesBefore, verticesBefore);
@@ -101,10 +111,10 @@ namespace basilisk
         BindAndFillVbo(buffers.Vbo, buffers.AmountVertices, buffers.Vertices);
         BindAndFillEbo(buffers.Ebo, buffers.AmountIndices, buffers.Indices);
 
-        //Position
+        // Position
         SetAttribPointer(0, posSize, stride, 0);
 
-        //Color
+        // Color
         SetAttribPointer(1, Color::ColorParamsAmount, stride, posSize);
 
         if (isTextured)
@@ -125,7 +135,10 @@ namespace basilisk
 
     void Renderer::StartDraw()
     {
-        glClear(GL_COLOR_BUFFER_BIT);
+        if (GetInstance().Is2D)
+            glClear(GL_COLOR_BUFFER_BIT);
+        else
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     void Renderer::EndDraw() const
