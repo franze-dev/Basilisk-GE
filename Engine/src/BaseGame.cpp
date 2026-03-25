@@ -10,7 +10,7 @@
 namespace basilisk
 {
 
-    BaseGame::BaseGame(const char* windowName, const int sizeX, const int sizeY) :
+    BaseGame::BaseGame(const char* windowName, const int sizeX, const int sizeY, const bool is2D) :
         Renderer(Renderer::GetInstance()), X(sizeX), Y(sizeY), InputSystem(nullptr)
     {
         
@@ -24,7 +24,7 @@ namespace basilisk
 
         this->WindowName = windowName;
 
-        this->Renderer.InitGL();
+        this->Renderer.InitGL(is2D);
 
         this->Renderer.SetWindowRef(*this->Window);
 

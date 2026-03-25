@@ -22,7 +22,7 @@ namespace basilisk
         /// <param name="windowName">Name to set the window</param>
         /// <param name="sizeX">Width in pixels for the size of the window</param>
         /// <param name="sizeY">Height in pixels for the size of the window</param>
-        BaseGame(const char* windowName, int sizeX, int sizeY);
+        BaseGame(const char* windowName, int sizeX, int sizeY, const bool is2D);
 
         virtual ~BaseGame();
 
