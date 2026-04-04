@@ -3,6 +3,7 @@
 #include "Basilisk/TileMap.h"
 #include "Player.h"
 #include "Box.h"
+#include "Camera.h"
 
 namespace game
 {
@@ -19,6 +20,8 @@ namespace game
         //basilisk::TileMap Map;
         Player Player;
         Box CollisionBox;
+        basilisk::Mouse Mouse;
+        basilisk::Camera Camera;
     };
 
 } // namespace game

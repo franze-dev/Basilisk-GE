@@ -9,7 +9,10 @@ namespace game
     //    Map("res/assets/map.json", "res/assets/spritesheet.png", {sizeX, sizeY}),
         Player(100.0f, {64, 64}, {600.0f, 500.0f}), 
         CollisionBox({0.0f, 0.0f}, {1.0f, 1.0f}, basilisk::Color::Red), 
+        Mouse(GetWindowPtr()),
+        Camera(Mouse, this->GetInputSystem())
     {
+        this->SetCameraRef(Camera);
     }
 
     void Game::Init()
@@ -29,8 +32,10 @@ namespace game
         this->CollisionBox.SetPosition(Player.GetPosition2D());
         this->CollisionBox.SetScaling(this->Player.GetScale2D());
 
-        this->Map.Init();
-        this->Player.map = &this->Map;
+        Camera.SwitchToFirstPerson();
+
+        //this->Map.Init();
+        //this->Player.map = &this->Map;
     }
 
     void Game::Update()
