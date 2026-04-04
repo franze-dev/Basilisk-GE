@@ -63,7 +63,7 @@ namespace game
             ChangeAnimation(&this->IdleAnimation);
         }
         
-        this->CollideAndMove(map->CheckCollision(currentPos, this->GetScale2D()), newPos);
+        //this->CollideAndMove(map->CheckCollision(currentPos, this->GetScale2D()), newPos);
     }
 
 } // namespace game

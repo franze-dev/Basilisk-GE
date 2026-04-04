@@ -19,7 +19,7 @@ namespace game
         basilisk::InputAction* MoveDownIA = nullptr;
         basilisk::InputAction* MoveLeftIA = nullptr;
         basilisk::InputAction* MoveRightIA = nullptr;
-        basilisk::TileMap* map = nullptr;
+        //basilisk::TileMap* map = nullptr;
 
     private:
         void Move();

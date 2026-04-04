@@ -6,9 +6,9 @@ namespace game
 {
     Game::Game(const char* windowName, float sizeX, float sizeY) :
         BaseGame(windowName, sizeX, sizeY, true), 
-        Map("res/assets/map.json", "res/assets/spritesheet.png", {sizeX, sizeY}),
-        Player(100.0f, {Map.GetTileSize(), Map.GetTileSize()}, {600.0f, 500.0f}), 
-        CollisionBox({0.0f, 0.0f}, {1.0f, 1.0f}, basilisk::Color::Red)
+    //    Map("res/assets/map.json", "res/assets/spritesheet.png", {sizeX, sizeY}),
+        Player(100.0f, {64, 64}, {600.0f, 500.0f}), 
+        CollisionBox({0.0f, 0.0f}, {1.0f, 1.0f}, basilisk::Color::Red), 
     {
     }
 

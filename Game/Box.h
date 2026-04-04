@@ -3,10 +3,10 @@
 
 namespace game
 {
-    class CollisionBox : public basilisk::Square
+    class Box : public basilisk::Square
     {
     public:
-        CollisionBox(glm::vec2 center, glm::vec2 size, basilisk::Color color);
+        Box(glm::vec2 center, glm::vec2 size, basilisk::Color color);
 
         void Update() override;
     };

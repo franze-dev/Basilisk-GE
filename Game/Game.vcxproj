@@ -116,13 +116,13 @@
     <Content Include="Build.bat" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CollisionBox.cpp" />
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CollisionBox.h" />
+    <ClInclude Include="Box.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
