@@ -119,6 +119,7 @@
     <ClInclude Include="src\Animation.h" />
     <ClInclude Include="src\BaseGame.h" />
     <ClInclude Include="src\Buffers.h" />
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\CollisionManager.h" />
     <ClInclude Include="src\Colors.h" />
     <ClInclude Include="src\Entity.h" />
@@ -144,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="src\Animation.cpp" />
     <ClCompile Include="src\BaseGame.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\Colors.cpp" />
     <ClCompile Include="src\Entity.cpp" />

@@ -2,6 +2,7 @@
 
 
 #include <GL/glew.h>
+#include "Renderer.h"
 
 #include "Colors.h"
 #include "Log.h"

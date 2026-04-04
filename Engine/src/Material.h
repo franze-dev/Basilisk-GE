@@ -4,12 +4,13 @@
 #include <string>
 
 #include "Export.h"
-#include "Renderer.h"
+#include "Colors.h"
 #include "glm/glm.hpp"
 
 namespace basilisk
 {
     using SPProc = unsigned int;
+    using ShaderProc = unsigned int;
 
     /// <summary>
     /// This class is in charged of shaders building and compilation.

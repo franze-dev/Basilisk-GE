@@ -23,6 +23,9 @@
     <Filter Include="Game\Rendering">
       <UniqueIdentifier>{2be30051-f817-4392-b29e-d474312556df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Input">
+      <UniqueIdentifier>{403ed3f2-0233-4adf-af14-e595e7560a07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Sprite.cpp">
@@ -73,12 +76,6 @@
     <ClCompile Include="src\CollisionManager.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="src\InputAction.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="src\BaseGame.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -87,6 +84,18 @@
     </ClCompile>
     <ClCompile Include="src\Frame.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp">
+      <Filter>Game\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputAction.cpp">
+      <Filter>Game\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mouse.cpp">
+      <Filter>Game\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,17 +156,23 @@
     <ClInclude Include="src\BaseGame.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\InputAction.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="src\Animation.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Frame.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InputAction.h">
+      <Filter>Game\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input.h">
+      <Filter>Game\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mouse.h">
+      <Filter>Game\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
