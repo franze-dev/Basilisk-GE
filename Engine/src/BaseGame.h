@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 #include "Export.h"
 #include "Input.h"
 
@@ -9,6 +7,7 @@ namespace basilisk
 {
     class Window;
     class Renderer;
+    class Camera;
 
     /// <summary>
     /// Abstract class to be inherited by Game
@@ -88,9 +87,13 @@ namespace basilisk
         float GetDelta();
         
         Input& GetInputSystem();
+
+        void SetCameraRef(Camera& camera);
+
+        Window* GetWindowPtr();
         
         Renderer& Renderer;
-    
+
     private:
         const char* WindowName;
         int X;

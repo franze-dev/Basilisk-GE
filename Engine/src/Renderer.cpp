@@ -149,7 +149,10 @@ namespace basilisk
 
     void Renderer::UpdateViewMatrix()
     {
-        this->ViewMatrix = glm::lookAt(this->CameraPos, this->CameraTarget, this->CameraUp);
+        if (this->ActiveCamera == nullptr)
+            this->ViewMatrix = glm::lookAt(this->FixedCameraPos, this->FixedCameraTarget, this->FixedCameraUp);
+        else
+            this->ViewMatrix = ActiveCamera->GetUpdatedViewMatrix();
     }
 
     Renderer& Renderer::GetInstance()
@@ -160,18 +163,17 @@ namespace basilisk
 
     glm::vec3 Renderer::GetCameraUp() const
     {
-        return this->CameraUp;
+        return this->FixedCameraUp;
     }
-
 
     glm::vec3 Renderer::GetCameraTarget() const
     {
-        return this->CameraTarget;
+        return this->FixedCameraTarget;
     }
 
     glm::vec3 Renderer::GetCameraPos() const
     {
-        return this->CameraPos;
+        return this->FixedCameraPos;
     }
 
     glm::mat4 Renderer::GetProjectionMatrix() const
@@ -184,19 +186,28 @@ namespace basilisk
         return this->ViewMatrix;
     }
 
-
     void Renderer::SetWindowRef(basilisk::Window& window)
     {
         this->Window = &window;
     }
 
-    Renderer::Renderer() :
-        CameraPos(0, 0, 3.0f),
-        CameraTarget(0, 0, 0),
-        Window(nullptr)
+    void Renderer::SetCameraRef(Camera& camera)
     {
-        const auto invDirection = glm::normalize(CameraPos - CameraTarget);
-        const auto right = glm::normalize(glm::cross(glm::vec3(0, 1.0, 0), invDirection));
-        this->CameraUp = glm::cross(invDirection, right);
+        this->ActiveCamera = &camera;
+
+        this->ActiveCamera->Init();
     }
-} // basilisk
+
+    void Renderer::UpdateCamera(float deltaTime)
+    {
+        if (this->ActiveCamera != nullptr)
+            this->ActiveCamera->Update(deltaTime);
+    }
+
+    Renderer::Renderer() : FixedCameraPos(0, 0, 3.0f), FixedCameraTarget(0, 0, 0), Window(nullptr)
+    {
+        const auto invDirection = glm::normalize(FixedCameraPos - FixedCameraTarget);
+        const auto right = glm::normalize(glm::cross(glm::vec3(0, 1.0, 0), invDirection));
+        this->FixedCameraUp = glm::cross(invDirection, right);
+    }
+} // namespace basilisk

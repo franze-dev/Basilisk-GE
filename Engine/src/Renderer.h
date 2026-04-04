@@ -1,9 +1,9 @@
 #pragma once
 
+#include "Buffers.h"
+#include "Camera.h"
 #include "Export.h"
 #include "glm/glm.hpp"
-#include "Buffers.h"
-
 
 namespace basilisk
 {
@@ -19,7 +19,6 @@ namespace basilisk
     class BASILISK_API Renderer
     {
     public:
-        
 #pragma region Loading
         void SetDimensions(const bool is2D);
         /// <summary>
@@ -49,7 +48,7 @@ namespace basilisk
         /// <param name="sizeArray">Size of array to fill buffer with</param>
         /// <param name="array">Array of data</param>
         static void BindAndFillVbo(const unsigned int VboID, const int sizeArray, const float array[]);
-        
+
         /// <summary>
         /// Binds and fills the EBO.
         /// </summary>
@@ -66,11 +65,12 @@ namespace basilisk
         /// <param name="strideAmount">Size of stride</param>
         /// <param name="start">Start of value</param>
         static void SetAttribPointer(const int index, const int size, const int strideAmount, const int start);
-        
-        void BindBufferDataUV(const unsigned int vbo, const int amountVertices, float* arrayData, const int verticesBefore, const int sizeDataInVbo);
+
+        void BindBufferDataUV(
+            const unsigned int vbo, const int amountVertices, float* arrayData, const int verticesBefore, const int sizeDataInVbo);
 
 #pragma endregion
-        
+
 #pragma region Drawing
         /// <summary>
         /// Generates vertex array object, vertex buffer object and elements buffer object.
@@ -78,7 +78,7 @@ namespace basilisk
         /// <param name="buffers">Buffers to pass to OpenGl</param>
         /// <param name="isTextured">Whether is textured or not</param>
         void GenerateVBs(Buffers& buffers, bool isTextured);
-        
+
         /// <summary>
         /// Draws non-solid color objects.
         /// </summary>
@@ -86,7 +86,7 @@ namespace basilisk
         /// <param name="vao">Vertex Array Object</param>
         /// <param name="amountIndices">Amount of indices</param>
         void Draw(const SPProc& shaderProg, unsigned int& vao, int amountIndices) const;
-        
+
         /// <summary>
         /// Makes Pre-draw calls.
         /// </summary>
@@ -101,7 +101,7 @@ namespace basilisk
         /// Updates the view matrix. This function only works with a unique camera.
         /// </summary>
         void UpdateViewMatrix();
-        
+
 #pragma endregion
 
 #pragma region Getters
@@ -148,22 +148,27 @@ namespace basilisk
         /// </summary>
         /// <param name="window">Window to work on</param>
         void SetWindowRef(Window& window);
-        
+
+        void SetCameraRef(Camera& camera);
+
+
 #pragma endregion
 
-        
-        Renderer(const Renderer& other) = delete;            // copy constructor
-        Renderer(Renderer&& other) = delete;                 // move constructor
+        void UpdateCamera(float deltaTime);
+
+        Renderer(const Renderer& other) = delete; // copy constructor
+        Renderer(Renderer&& other) = delete; // move constructor
         Renderer& operator=(const Renderer& other) = delete; // copy assignment
-        Renderer& operator=(Renderer&& other) = delete;      // move assignment
+        Renderer& operator=(Renderer&& other) = delete; // move assignment
 
     private:
         Renderer();
         ~Renderer() = default;
-        
-        glm::vec3 CameraPos;
-        glm::vec3 CameraUp;
-        glm::vec3 CameraTarget;
+
+        Camera* ActiveCamera = nullptr;
+        glm::vec3 FixedCameraPos;
+        glm::vec3 FixedCameraUp;
+        glm::vec3 FixedCameraTarget;
         bool Is2D = false;
 
         glm::mat4 ProjectionMatrix = glm::mat4(1.0f);
@@ -172,5 +177,5 @@ namespace basilisk
         Window* Window;
     };
 
-    
+
 } // namespace basilisk
