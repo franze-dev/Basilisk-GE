@@ -55,8 +55,7 @@ namespace basilisk
         Entity2D() = default;
         virtual ~Entity2D() = default;
 
-        Color Color = Color::Red;
-        glm::vec2 PreviousPos = {0.0f, 0.0f};
+        
     private:
         // These functions are private to make 2D entities use 2D corresponding functions
         [[nodiscard]] glm::vec3 GetPosition() const override;

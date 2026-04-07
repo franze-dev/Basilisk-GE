@@ -148,4 +148,15 @@ namespace basilisk
     {
         return this->InputSystem;
     }
+
+    void BaseGame::SetCameraRef(Camera& camera)
+    {
+        Renderer.SetCameraRef(camera);
+    }
+
+    Window* BaseGame::GetWindowPtr()
+    {
+        return this->Window;
+    }
+
 } // namespace basilisk

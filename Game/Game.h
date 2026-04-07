@@ -18,7 +18,7 @@ namespace game
 
     private:
         //basilisk::TileMap Map;
-        Player Player;
+        //Player Player;
         Box CollisionBox;
         basilisk::Mouse Mouse;
         basilisk::Camera Camera;

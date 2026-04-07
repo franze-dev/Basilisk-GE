@@ -98,10 +98,10 @@ namespace basilisk
         struct CameraData
         {
             CameraData() = default;
-            glm::vec3 Pos = {0, 0, 0};
+            glm::vec3 Pos = {0, 0, 100};
             glm::vec3 Up = {0, 1, 0};
             glm::vec3 Right = {1, 0, 0};
-            glm::vec3 Front = {0, 0, 1};
+            glm::vec3 Front = {0, 0, -1};
             float Speed = 40.0f;
             float Yaw = -89.0f;
             float Pitch = 0.0f;

@@ -142,6 +142,9 @@ namespace basilisk
         glm::mat4 RotationMatrix = glm::mat4(1.0f);
         Buffers buffers;
 
+        Color Color = Color::Red;
+        glm::vec2 PreviousPos = {0.0f, 0.0f};
+
     private:
         void UpdateRotationMatrix();
         void UpdateTranslateMatrix();

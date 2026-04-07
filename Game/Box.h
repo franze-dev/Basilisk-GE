@@ -1,12 +1,12 @@
 #pragma once
-#include "Basilisk/Square.h"
+#include "Basilisk/Cube.h"
 
 namespace game
 {
-    class Box : public basilisk::Square
+    class Box : public basilisk::Cube
     {
     public:
-        Box(glm::vec2 center, glm::vec2 size, basilisk::Color color);
+        Box(glm::vec3 center, glm::vec3 size, basilisk::Color color);
 
         void Update() override;
     };

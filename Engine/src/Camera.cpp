@@ -111,7 +111,7 @@ namespace basilisk
 
     void Camera::Look()
     {
-        glm::vec2 offset = ActiveMouse->GetOffset();
+        glm::vec2 offset = ActiveMouse->GetOffsetAndReset();
 
         this->CamData.Yaw += offset.x;
         this->CamData.Pitch += offset.y;

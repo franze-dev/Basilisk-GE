@@ -26,6 +26,12 @@
     <Filter Include="Game\Input">
       <UniqueIdentifier>{403ed3f2-0233-4adf-af14-e595e7560a07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Shape\2D">
+      <UniqueIdentifier>{ecf26b93-2375-4a63-bf37-47552b7d3c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Shape\2D\3D">
+      <UniqueIdentifier>{c19e6846-e8f8-4820-97a1-ee265295e4d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Sprite.cpp">
@@ -45,15 +51,6 @@
     </ClCompile>
     <ClCompile Include="src\Tilemap.cpp">
       <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shape.cpp">
-      <Filter>Entity\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Square.cpp">
-      <Filter>Entity\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Triangle.cpp">
-      <Filter>Entity\Shape</Filter>
     </ClCompile>
     <ClCompile Include="src\Window.cpp">
       <Filter>Game\Rendering</Filter>
@@ -97,6 +94,21 @@
     <ClCompile Include="src\Mouse.cpp">
       <Filter>Game\Input</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shape.cpp">
+      <Filter>Entity\Shape\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Square.cpp">
+      <Filter>Entity\Shape\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triangle.cpp">
+      <Filter>Entity\Shape\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Polygon.cpp">
+      <Filter>Entity\Shape\2D\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cube.cpp">
+      <Filter>Entity\Shape\2D\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entity.h">
@@ -116,15 +128,6 @@
     </ClInclude>
     <ClInclude Include="src\Tilemap.h">
       <Filter>Tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Shape.h">
-      <Filter>Entity\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Square.h">
-      <Filter>Entity\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Triangle.h">
-      <Filter>Entity\Shape</Filter>
     </ClInclude>
     <ClInclude Include="src\Window.h">
       <Filter>Game\Rendering</Filter>
@@ -173,6 +176,21 @@
     </ClInclude>
     <ClInclude Include="src\Mouse.h">
       <Filter>Game\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triangle.h">
+      <Filter>Entity\Shape\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shape.h">
+      <Filter>Entity\Shape\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Square.h">
+      <Filter>Entity\Shape\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Polygon.h">
+      <Filter>Entity\Shape\2D\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cube.h">
+      <Filter>Entity\Shape\2D\3D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

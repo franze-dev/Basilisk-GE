@@ -43,8 +43,10 @@ namespace basilisk
     {
         glfwSetInputMode(ActiveWindow->GetWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     }
-    glm::vec2 Mouse::GetOffset() const
+    glm::vec2 Mouse::GetOffsetAndReset() 
     {
-        return Offset;
+        glm::vec2 temp = Offset;
+        Offset = glm::vec2(0.0f, 0.0f);
+        return temp;
     }
 } // namespace basilisk

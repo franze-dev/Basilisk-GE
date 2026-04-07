@@ -2,8 +2,8 @@
 
 namespace game
 {
-    Box::Box(glm::vec2 center, glm::vec2 size, basilisk::Color color) : 
-        Square(center, size, true, color)
+    Box::Box(glm::vec3 center, glm::vec3 size, basilisk::Color color) : 
+        Cube(center, size, true, color)
     {
     }
 

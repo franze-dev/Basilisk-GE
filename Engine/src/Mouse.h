@@ -10,7 +10,9 @@ namespace basilisk
         explicit Mouse(Window* window);
         void HideCursor();
 
-        glm::vec2 GetOffset() const;
+        //TODO: Center cursor each frame for cam
+
+        glm::vec2 GetOffsetAndReset();
 
         glm::vec2 LastPos = {0, 0};
         glm::vec2 Offset = {0, 0};
