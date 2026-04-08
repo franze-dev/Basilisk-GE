@@ -29,7 +29,7 @@ namespace basilisk
         /// <summary>
         /// Initializes the entity. Should be called inside an implemented Init call from base game.
         /// </summary>
-        virtual void Init() = 0;
+        virtual void Init();
 
         /// <summary>
         /// Updates the entity. Should be called inside an implemented Update call from base game.
@@ -39,7 +39,7 @@ namespace basilisk
         /// <summary>
         /// Draws the entity. Should be called inside an implemented Draw call from base game.
         /// </summary>
-        virtual void Draw() = 0;
+        virtual void Draw();
         
 #pragma endregion
 

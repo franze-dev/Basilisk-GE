@@ -16,6 +16,33 @@ namespace basilisk
         delete[] this->buffers.Indices;
     }
 
+    void Entity::Init()
+    {
+        const auto mat = this->GetMaterial();
+        this->UpdateBuffers();
+
+        if (!mat->IsMaterialBuilt())
+            mat->BuildShader();
+
+        if (!mat->IsProjectionSent)
+        {
+            Renderer::GetInstance().LoadProjectionMatrix();
+            mat->IsProjectionSent = true;
+        }
+    }
+
+    void Entity::Draw()
+    {
+        const auto mat = this->GetMaterial();
+        auto& renderer = Renderer::GetInstance();
+
+        renderer.UpdateViewMatrix();
+        const auto matrix = renderer.GetProjectionMatrix() * renderer.GetViewMatrix() * this->ModelMatrix;
+        mat->UpdateGLMatrix(matrix, "matrix");
+
+        renderer.Draw(mat->GetShaderProgram(), buffers.Vao, buffers.AmountIndices);
+    }
+
     void Entity::SetRotation(float angle, const Axis& rotationAxis, const bool isRads)
     {
         if (!isRads)

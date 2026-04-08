@@ -36,34 +36,6 @@ namespace basilisk
         this->Entity::SetPosition({newPosition.x, newPosition.y, 0.0f});
     }
 
-    void Entity2D::Init()
-    {
-        const auto mat = this->GetMaterial();
-        this->UpdateBuffers();
-
-        if (!mat->IsMaterialBuilt())
-            mat->BuildShader();
-
-        if (!mat->IsProjectionSent)
-        {
-            Renderer::GetInstance().LoadProjectionMatrix();
-            mat->IsProjectionSent = true;
-        }
-    }
-
-    void Entity2D::Draw()
-    {
-        const auto mat = this->GetMaterial();
-        auto& renderer = Renderer::GetInstance();
-
-        renderer.UpdateViewMatrix();
-        const auto matrix = renderer.GetProjectionMatrix() * renderer.GetViewMatrix() * this->ModelMatrix;
-        mat->UpdateGLMatrix(matrix, "matrix");
-
-        renderer.Draw(mat->GetShaderProgram(), buffers.Vao, buffers.AmountIndices);
-
-    }
-
     glm::vec3 Entity2D::GetPosition() const
     {
         return Entity::GetPosition();
