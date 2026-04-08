@@ -19,7 +19,7 @@ namespace game
         this->CollisionBox.SetMaterial(collisionMat);
         this->CollisionBox.Init();
 
-        Camera.SwitchToFirstPerson();
+        Camera.SetEntity(&this->CollisionBox, {0.0f, 0.0f, 0.0f}, false);
     }
 
     void Game::Update()
