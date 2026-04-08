@@ -91,6 +91,9 @@ namespace basilisk
         this->MoveLeftIA = &this->InputSystem->NewInput(basilisk::Keys::A);
         this->MoveBwIA = &this->InputSystem->NewInput(basilisk::Keys::S);
         this->MoveRightIA = &this->InputSystem->NewInput(basilisk::Keys::D);
+
+        CenterCursor();
+        HideCursor();
     }
 
     void Camera::Update(float deltaTime)
@@ -147,9 +150,9 @@ namespace basilisk
             if (MoveBwIA->IsDown())
                 CamData.Pos -= CamData.Front * speed;
             if (MoveLeftIA->IsDown())
-                CamData.Pos -= CamData.Right * speed;
-            if (MoveRightIA->IsDown())
                 CamData.Pos += CamData.Right * speed;
+            if (MoveRightIA->IsDown())
+                CamData.Pos -= CamData.Right * speed;
             break;
         case CameraMode::FirstFollowPerson:
             CamData.Pos = this->Target.Ptr->GetPosition() + CamData.EntityOffset;
@@ -194,6 +197,21 @@ namespace basilisk
 
         this->CamData.EntityOffset = offset;
         this->CamData.Mode = CameraMode::ThirdPerson;
+    }
+
+    void Camera::HideCursor()
+    {
+        this->ActiveMouse->HideCursor();
+    }
+
+    void Camera::CenterCursor()
+    {
+        this->ActiveMouse->SetCenteredCursor(true);
+    }
+
+    void Camera::SetThirdPersonDistance(float distance)
+    {
+        this->CamData.ThirdPersonDistance = distance;
     }
 
 } // namespace basilisk

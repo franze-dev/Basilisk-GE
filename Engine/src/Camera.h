@@ -87,6 +87,12 @@ namespace basilisk
         /// </summary>
         void SwitchToFirstPerson();
 
+        void HideCursor();
+
+        void CenterCursor();
+
+        void SetThirdPersonDistance(float distance);
+
     private:
         enum class CameraMode
         {
@@ -102,13 +108,13 @@ namespace basilisk
             glm::vec3 Up = {0, 1, 0};
             glm::vec3 Right = {1, 0, 0};
             glm::vec3 Front = {0, 0, -1};
-            float Speed = 40.0f;
+            float Speed = 10.0f;
             float Yaw = -89.0f;
             float Pitch = 0.0f;
             float Roll = 0.0f;
             float MaxPitch = 89.0f;
             float MinPitch = -89.0f;
-            float ThirdPersonDistance = 50;
+            float ThirdPersonDistance = 20;
             CameraMode Mode = CameraMode::FirstPerson;
             glm::vec3 EntityOffset = {0.0f, 0.0f, 0.0f};
         };

@@ -10,7 +10,7 @@ namespace basilisk
         explicit Mouse(Window* window);
         void HideCursor();
 
-        //TODO: Center cursor each frame for cam
+        void SetCenteredCursor(bool isCentered);
 
         glm::vec2 GetOffsetAndReset();
 
@@ -22,9 +22,11 @@ namespace basilisk
         const float MaxFov = 45.0f;
         const float MinFov = 1.0f;
 
+        void CenterCursor();
+        bool MoveDetection = false;
     private:
         Window* ActiveWindow = nullptr;
-
+        bool IsCentered = true;
 
     };
 
